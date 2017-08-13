@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ttstcy</title>
+  <subtitle>每一个不曾起舞的日子，都是对生命的辜负</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-08-13T13:41:28.121Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Ttstcy</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每天一道python练习02</title>
+    <link href="http://yoursite.com/2017/08/13/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A002/"/>
+    <id>http://yoursite.com/2017/08/13/每天一道python练习02/</id>
+    <published>2017-08-13T13:27:00.000Z</published>
+    <updated>2017-08-13T13:41:28.121Z</updated>
+    
+    <content type="html"><![CDATA[<p>一个整数，它加上100后是一个完全平方数，再加上168又是一个完全平方数，请问该数是多少？</p>
+<p>分析：可以通过math库里sqrt函数进行求解，如果可以开平方则这个数为整数，否则为浮点数。（math.sqrt()开方函数)</p>
+<p>code:</p>
+<p>#!/usr/bin/env python</p>
+<p>#-<em>- coding:utf-8 -</em>-</p>
+<p>#create Ttstcy</p>
+<p>import math</p>
+<p>i=1</p>
+<p>while True:<br>    if math.sqrt(i+100)-int(math.sqrt(i+100))==0 and math.sqrt(i+168)-int(math.sqrt(i+168))==0:<br>        print “这个数是%d” % i<br>        break<br>    else:<br>        i+=1</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一个整数，它加上100后是一个完全平方数，再加上168又是一个完全平方数，请问该数是多少？&lt;/p&gt;
+&lt;p&gt;分析：可以通过math库里sqrt函数进行求解，如果可以开平方则这个数为整数，否则为浮点数。（math.sqrt()开方函数)&lt;/p&gt;
+&lt;p&gt;code:&lt;/p&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+    
+      <category term="python,math" scheme="http://yoursite.com/tags/python-math/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每天一道python练习01</title>
+    <link href="http://yoursite.com/2017/08/12/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A001/"/>
+    <id>http://yoursite.com/2017/08/12/每天一道python练习01/</id>
+    <published>2017-08-12T13:24:07.000Z</published>
+    <updated>2017-08-13T13:41:15.717Z</updated>
+    
+    <content type="html"><![CDATA[<p>有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？</p>
+<p>分析：可以采用 for循环排列由1234组成的三位数，用if条件进行不重复判断，最后输出。</p>
+<p>code:</p>
+<p>#!/usr/bin/env python</p>
+<p>#-<em>- coding: utf-8 -</em>-</p>
+<p>#create TTstcy</p>
+<p>#计量次数<br>num=0</p>
+<p>print “由1234组成的不重复的三位数有:”</p>
+<p>#for循环计算排列个数</p>
+<p>for i in range（1，5):<br>    for j in range(1,5):<br>        for k in range(1,5):<br>        if i!=j and j!=k and i!=k:<br>             print i<em>100+j</em>10+k<br>         num+=1</p>
+<p>print “共有%d种情况” % num</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？&lt;/p&gt;
+&lt;p&gt;分析：可以采用 for循环排列由1234组成的三位数，用if条件进行不重复判断，最后输出。&lt;/p&gt;
+&lt;p&gt;code:&lt;/p&gt;
+&lt;p&gt;#!/usr/bin/env python&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简记使用hexo在github搭建个人博客</title>
+    <link href="http://yoursite.com/2017/08/12/%E7%AE%80%E8%AE%B0%E4%BD%BF%E7%94%A8hexo%E5%9C%A8github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2017/08/12/简记使用hexo在github搭建个人博客/</id>
+    <published>2017-08-12T08:00:57.000Z</published>
+    <updated>2017-08-12T08:07:33.131Z</updated>
+    
+    <content type="html"><![CDATA[<p>  很早之前就想搭建一个个人博客，记录一些生活中的感悟，可惜一直没有时间。现在终于有时间了，记录一下<br>搭建的过程。<br>首先是准备工作：<br>1.注册给github账号<br>  进入<a href="https://github.com/注册github账号。" target="_blank" rel="external">https://github.com/注册github账号。</a><br>2.建立博客仓库<br>  注册成功后，登入。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;  很早之前就想搭建一个个人博客，记录一些生活中的感悟，可惜一直没有时间。现在终于有时间了，记录一下&lt;br&gt;搭建的过程。&lt;br&gt;首先是准备工作：&lt;br&gt;1.注册给github账号&lt;br&gt;  进入&lt;a href=&quot;https://github.com/注册github账号。&quot;
+    
+    </summary>
+    
+    
+      <category term="hexo,git" scheme="http://yoursite.com/tags/hexo-git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hello</title>
+    <link href="http://yoursite.com/2017/08/12/hello/"/>
+    <id>http://yoursite.com/2017/08/12/hello/</id>
+    <published>2017-08-12T06:16:46.000Z</published>
+    <updated>2017-08-12T08:08:04.226Z</updated>
+    
+    <content type="html"><![CDATA[<p>hello world!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;hello world!&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="hello" scheme="http://yoursite.com/tags/hello/"/>
+    
+  </entry>
+  
+</feed>
