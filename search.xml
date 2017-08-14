@@ -5,31 +5,32 @@
     <entry>
       <title><![CDATA[python排序算法01冒泡排序]]></title>
       <url>/2017/08/14/python%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%9501%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<h3>01冒泡排序</h3>
+
+<p><b>描述</b></p>
+<p>  冒泡算法属于入门级算法，主要通过循环，进行向上的两两比较，从而达到冒泡的效果具体方法是针对循环中的每一元素，都对它后面的元素循环比较，交换大小值，每次循环“冒”一个最<br>大值（或最小值）放在里层循环初始的地方。<br>python中的具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-* coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">冒泡排序 for python</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleSort</span><span class="params">(L)</span>:</span></div><div class="line">    <span class="keyword">assert</span>(type(L)==type([<span class="string">''</span>]))</div><div class="line">    length = len(L)</div><div class="line">    <span class="keyword">if</span> length==<span class="number">0</span> <span class="keyword">or</span> length==<span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> L</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(length):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> xrange(length<span class="number">-1</span>-i):</div><div class="line">            <span class="keyword">if</span> L[j] &lt; L[j+<span class="number">1</span>]: </div><div class="line">                temp = L[j]</div><div class="line">                L[j] = L[j+<span class="number">1</span>]</div><div class="line">                L[j+<span class="number">1</span>] = temp</div><div class="line">    <span class="keyword">return</span> L</div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<p>冒泡优点： 稳定（时间复杂度为O(1)常量）、简单<br>       缺点：效率不高 （如果一个数组有n个数，那么排序完成后需要比较n*(n-1)/2次)</p>
+]]></content>
       
+        
+        <tags>
+            
+            <tag> 排序算法 </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
         
     </entry>
     
     <entry>
       <title><![CDATA[每天一道python练习03]]></title>
       <url>/2017/08/14/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A003/</url>
-      <content type="html"><![CDATA[<p>输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组</p>
+      <content type="html"><![CDATA[<p></p><h3>题目：输入某年某月某日，判断这一天是这一年的第几天？</h3><br>strptime（）根据格式把字符串解析为一个元组<p></p>
 <p>分析：通过datetime函数获取到当前时间转化为</p>
-<p>#!/usr/bin/env python</p>
-<p>#-<em>- coding:utf-8 -</em>-</p>
-<p>#creat Ttstcy</p>
-<p>‘’’<br>题目：输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组<br>strftime() 函数接收以时间元组，并返回以可读字符串表示的当地时间，格式由参数format决定。<br>‘’’</p>
-<p>code1:</p>
-<p>#导入时间的库函数<br>import datetime<br>from datetime import datetime</p>
-<p>time=str(raw_input(“请输入日期(例如20170814):”))</p>
-<p>tm=datetime.strptime(time,”%Y%m%d”) #现在日期</p>
-<p>tm1=time[0:4]+’0101’         #输入年限的第一天<br>tm2=datetime.strptime(tm1,”%Y%m%d”)   </p>
-<p>nowday=int((tm-tm2).days) + 1</p>
-<p>print “今天是今年的第%d天” % nowday</p>
-<p>code2:</p>
-<p>#导入时间的库函数<br>import datetime<br>from datetime import datetime</p>
-<p>time=datetime.now()</p>
-<p>print “今天是今年的第%s天” % (time.strftime(“%j”))</p>
+<p>code1:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"><span class="comment">#creat Ttstcy</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">题目：输入某年某月某日，判断这一天是这一年的第几天？</span></div><div class="line"><span class="string">strptime（）根据格式把字符串解析为一个元组</span></div><div class="line"><span class="string">strftime() 函数接收以时间元组，并返回以可读字符串表示的当地时间，格式由参数format决定。</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line"><span class="comment">#导入时间的库函数</span></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"></div><div class="line">time=str(raw_input(<span class="string">"请输入日期(例如20170814):"</span>))</div><div class="line"></div><div class="line">tm=datetime.strptime(time,<span class="string">"%Y%m%d"</span>) <span class="comment">#现在日期</span></div><div class="line"></div><div class="line"></div><div class="line">tm1=time[<span class="number">0</span>:<span class="number">4</span>]+<span class="string">'0101'</span>         <span class="comment">#输入年限的第一天</span></div><div class="line">tm2=datetime.strptime(tm1,<span class="string">"%Y%m%d"</span>)   </div><div class="line"></div><div class="line">nowday=int((tm-tm2).days) + <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"今天是今年的第%d天"</span> % nowday</div></pre></td></tr></table></figure></p>
+<p>code2:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#导入时间的库函数</span></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"></div><div class="line">time=datetime.now()</div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"今天是今年的第%s天"</span> % (time.strftime(<span class="string">"%j"</span>))</div></pre></td></tr></table></figure></p>
 <p>注释:<br>python中时间日期格式化符号：<br>%y 两位数的年份表示（00-99）<br>%Y 四位数的年份表示（000-9999）<br>%m 月份（01-12）<br>%d 月内中的一天（0-31）<br>%H 24小时制小时数（0-23）<br>%I 12小时制小时数（01-12）<br>%M 分钟数（00=59）<br>%S 秒（00-59）<br>%a 本地简化星期名称<br>%A 本地完整星期名称<br>%b 本地简化的月份名称<br>%B 本地完整的月份名称<br>%c 本地相应的日期表示和时间表示<br>%j 年内的一天（001-366）<br>%p 本地A.M.或P.M.的等价符<br>%U 一年中的星期数（00-53）星期天为星期的开始<br>%w 星期（0-6），星期天为星期的开始<br>%W 一年中的星期数（00-53）星期一为星期的开始<br>%x 本地相应的日期表示<br>%X 本地相应的时间表示<br>%Z 当前时区的名称<br>%% %号本身</p>
 ]]></content>
       
@@ -45,15 +46,10 @@
     <entry>
       <title><![CDATA[每天一道python练习02]]></title>
       <url>/2017/08/13/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A002/</url>
-      <content type="html"><![CDATA[<p>一个整数，它加上100后是一个完全平方数，再加上168又是一个完全平方数，请问该数是多少？</p>
+      <content type="html"><![CDATA[<h3>题目：一个整数，它加上100后是一个完全平方数，再加上168又是一个完全平方数，请问该数是多少？</h3>
+
 <p>分析：可以通过math库里sqrt函数进行求解，如果可以开平方则这个数为整数，否则为浮点数。（math.sqrt()开方函数)</p>
-<p>code:</p>
-<p>#!/usr/bin/env python</p>
-<p>#-<em>- coding:utf-8 -</em>-</p>
-<p>#create Ttstcy</p>
-<p>import math</p>
-<p>i=1</p>
-<p>while True:<br>    if math.sqrt(i+100)-int(math.sqrt(i+100))==0 and math.sqrt(i+168)-int(math.sqrt(i+168))==0:<br>        print “这个数是%d” % i<br>        break<br>    else:<br>        i+=1</p>
+<p>code:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding:utf-8 -*-</span></div><div class="line"><span class="comment">#create Ttstcy</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line">i=<span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">if</span> math.sqrt(i+<span class="number">100</span>)-int(math.sqrt(i+<span class="number">100</span>))==<span class="number">0</span> <span class="keyword">and</span> math.sqrt(i+<span class="number">168</span>)-int(math.sqrt(i+<span class="number">168</span>))==<span class="number">0</span>:   </div><div class="line">        <span class="keyword">print</span> <span class="string">"这个数是%d"</span> % i</div><div class="line">        <span class="keyword">break</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        i+=<span class="number">1</span></div></pre></td></tr></table></figure></p>
 ]]></content>
       
         
@@ -68,7 +64,8 @@
     <entry>
       <title><![CDATA[每天一道python练习01]]></title>
       <url>/2017/08/12/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A001/</url>
-      <content type="html"><![CDATA[<p>有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？</p>
+      <content type="html"><![CDATA[<h3>题目：有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？</h3>
+
 <p>分析：可以采用 for循环排列由1234组成的三位数，用if条件进行不重复判断，最后输出。</p>
 <p>code:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="comment">#create TTstcy</span></div><div class="line"><span class="comment">#计量次数</span></div><div class="line">num=<span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"由1234组成的不重复的三位数有:"</span></div><div class="line"></div><div class="line"><span class="comment">#for循环计算排列个数</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range（<span class="number">1</span>，<span class="number">5</span>):</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>):</div><div class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>):</div><div class="line">	    <span class="keyword">if</span> i!=j <span class="keyword">and</span> j!=k <span class="keyword">and</span> i!=k:</div><div class="line">	         <span class="keyword">print</span> i*<span class="number">100</span>+j*<span class="number">10</span>+k</div><div class="line">		 num+=<span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"共有%d种情况"</span> % num</div></pre></td></tr></table></figure></p>
 ]]></content>
