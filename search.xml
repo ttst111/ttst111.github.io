@@ -3,8 +3,8 @@
   
     
     <entry>
-      <title><![CDATA[每天一道python联系03]]></title>
-      <url>/2017/08/14/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E8%81%94%E7%B3%BB03/</url>
+      <title><![CDATA[每天一道python练习03]]></title>
+      <url>/2017/08/14/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A003/</url>
       <content type="html"><![CDATA[<p>输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组</p>
 <p>分析：通过datetime函数获取到当前时间转化为</p>
 <p>#!/usr/bin/env python</p>

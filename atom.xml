@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-14T14:33:26.190Z</updated>
+  <updated>2017-08-14T14:38:58.990Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>每天一道python联系03</title>
-    <link href="http://yoursite.com/2017/08/14/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E8%81%94%E7%B3%BB03/"/>
-    <id>http://yoursite.com/2017/08/14/每天一道python联系03/</id>
+    <title>每天一道python练习03</title>
+    <link href="http://yoursite.com/2017/08/14/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A003/"/>
+    <id>http://yoursite.com/2017/08/14/每天一道python练习03/</id>
     <published>2017-08-14T14:12:38.000Z</published>
-    <updated>2017-08-14T14:33:26.190Z</updated>
+    <updated>2017-08-14T14:38:58.990Z</updated>
     
     <content type="html"><![CDATA[<p>输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组</p>
 <p>分析：通过datetime函数获取到当前时间转化为</p>
