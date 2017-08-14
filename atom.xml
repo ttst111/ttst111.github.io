@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-14T04:07:00.450Z</updated>
+  <updated>2017-08-14T14:33:26.190Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每天一道python联系03</title>
+    <link href="http://yoursite.com/2017/08/14/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E8%81%94%E7%B3%BB03/"/>
+    <id>http://yoursite.com/2017/08/14/每天一道python联系03/</id>
+    <published>2017-08-14T14:12:38.000Z</published>
+    <updated>2017-08-14T14:33:26.190Z</updated>
+    
+    <content type="html"><![CDATA[<p>输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组</p>
+<p>分析：通过datetime函数获取到当前时间转化为</p>
+<p>#!/usr/bin/env python</p>
+<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><h1 id="creat-Ttstcy"><a href="#creat-Ttstcy" class="headerlink" title="creat Ttstcy"></a>creat Ttstcy</h1><p>‘’’<br>题目：输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组<br>strftime() 函数接收以时间元组，并返回以可读字符串表示的当地时间，格式由参数format决定。<br>‘’’</p>
+<p>code1:</p>
+<p>#导入时间的库函数<br>import datetime<br>import time</p>
+<p>time=str(raw_input(“请输入日期(例如20170814):”))</p>
+<p>tm=datetime.datetime.strptime(time,”%Y%m%d”) #现在日期</p>
+<p>tm1=time[0:4]+’0101’         #输入年限的第一天<br>tm2=datetime.datetime.strptime(tm1,”%Y%m%d”)   </p>
+<p>nowday=int((tm-tm2).days) + 1</p>
+<p>print “今天是今年的第%d天” % nowday</p>
+<p>code2:</p>
+<p>#导入时间的库函数<br>import datetime<br>import time</p>
+<p>time=datetime.now()</p>
+<p>print “今天是今年的第%s天” % (time.strftime(“%j”))</p>
+<p>注释:<br>python中时间日期格式化符号：<br>%y 两位数的年份表示（00-99）<br>%Y 四位数的年份表示（000-9999）<br>%m 月份（01-12）<br>%d 月内中的一天（0-31）<br>%H 24小时制小时数（0-23）<br>%I 12小时制小时数（01-12）<br>%M 分钟数（00=59）<br>%S 秒（00-59）<br>%a 本地简化星期名称<br>%A 本地完整星期名称<br>%b 本地简化的月份名称<br>%B 本地完整的月份名称<br>%c 本地相应的日期表示和时间表示<br>%j 年内的一天（001-366）<br>%p 本地A.M.或P.M.的等价符<br>%U 一年中的星期数（00-53）星期天为星期的开始<br>%w 星期（0-6），星期天为星期的开始<br>%W 一年中的星期数（00-53）星期一为星期的开始<br>%x 本地相应的日期表示<br>%X 本地相应的时间表示<br>%Z 当前时区的名称<br>%% %号本身</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;输入某年某月某日，判断这一天是这一年的第几天？&lt;br&gt;strptime（）根据格式把字符串解析为一个元组&lt;/p&gt;
+&lt;p&gt;分析：通过datetime函数获取到当前时间转化为&lt;/p&gt;
+&lt;p&gt;#!/usr/bin/env python&lt;/p&gt;
+&lt;h1 id=&quot;coding-utf
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>每天一道python练习02</title>
