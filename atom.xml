@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-14T14:38:58.990Z</updated>
+  <updated>2017-08-14T14:40:53.619Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,12 +20,13 @@
     <link href="http://yoursite.com/2017/08/14/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A003/"/>
     <id>http://yoursite.com/2017/08/14/每天一道python练习03/</id>
     <published>2017-08-14T14:12:38.000Z</published>
-    <updated>2017-08-14T14:38:58.990Z</updated>
+    <updated>2017-08-14T14:40:53.619Z</updated>
     
     <content type="html"><![CDATA[<p>输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组</p>
 <p>分析：通过datetime函数获取到当前时间转化为</p>
 <p>#!/usr/bin/env python</p>
-<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding:utf-8 --"></a>-<em>- coding:utf-8 -</em>-</h1><h1 id="creat-Ttstcy"><a href="#creat-Ttstcy" class="headerlink" title="creat Ttstcy"></a>creat Ttstcy</h1><p>‘’’<br>题目：输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组<br>strftime() 函数接收以时间元组，并返回以可读字符串表示的当地时间，格式由参数format决定。<br>‘’’</p>
+<p>#-<em>- coding:utf-8 -</em>-</p>
+<h1 id="creat-Ttstcy"><a href="#creat-Ttstcy" class="headerlink" title="creat Ttstcy"></a>creat Ttstcy</h1><p>‘’’<br>题目：输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组<br>strftime() 函数接收以时间元组，并返回以可读字符串表示的当地时间，格式由参数format决定。<br>‘’’</p>
 <p>code1:</p>
 <p>#导入时间的库函数<br>import datetime<br>import time</p>
 <p>time=str(raw_input(“请输入日期(例如20170814):”))</p>
@@ -45,7 +46,7 @@
       &lt;p&gt;输入某年某月某日，判断这一天是这一年的第几天？&lt;br&gt;strptime（）根据格式把字符串解析为一个元组&lt;/p&gt;
 &lt;p&gt;分析：通过datetime函数获取到当前时间转化为&lt;/p&gt;
 &lt;p&gt;#!/usr/bin/env python&lt;/p&gt;
-&lt;h1 id=&quot;coding-utf
+&lt;p&gt;#-&lt;em&gt;- coding:
     
     </summary>
     
