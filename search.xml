@@ -9,7 +9,8 @@
 <p>分析：通过datetime函数获取到当前时间转化为</p>
 <p>#!/usr/bin/env python</p>
 <p>#-<em>- coding:utf-8 -</em>-</p>
-<h1 id="creat-Ttstcy"><a href="#creat-Ttstcy" class="headerlink" title="creat Ttstcy"></a>creat Ttstcy</h1><p>‘’’<br>题目：输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组<br>strftime() 函数接收以时间元组，并返回以可读字符串表示的当地时间，格式由参数format决定。<br>‘’’</p>
+<p>#creat Ttstcy</p>
+<p>‘’’<br>题目：输入某年某月某日，判断这一天是这一年的第几天？<br>strptime（）根据格式把字符串解析为一个元组<br>strftime() 函数接收以时间元组，并返回以可读字符串表示的当地时间，格式由参数format决定。<br>‘’’</p>
 <p>code1:</p>
 <p>#导入时间的库函数<br>import datetime<br>from datetime import datetime</p>
 <p>time=str(raw_input(“请输入日期(例如20170814):”))</p>
