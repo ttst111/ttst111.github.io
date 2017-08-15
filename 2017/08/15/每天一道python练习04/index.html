@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Ttstcy">
 <meta property="og:description" content="题目：输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数。  分析：控制语句进行判断。 code: 1234567891011121314151617181920212223242526#!/usr/bin/env python# -*- coding=utf-8 -*-# create Ttstcy&apos;&apos;&apos;题目：输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数。&apos;&apos;&apos;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-15T12:14:41.488Z">
+<meta property="og:updated_time" content="2017-08-15T12:20:34.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天一道python练习04">
 <meta name="twitter:description" content="题目：输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数。  分析：控制语句进行判断。 code: 1234567891011121314151617181920212223242526#!/usr/bin/env python# -*- coding=utf-8 -*-# create Ttstcy&apos;&apos;&apos;题目：输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数。&apos;&apos;&apos;">
@@ -337,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  238
+                  224
                 </span>
               
 
@@ -379,7 +379,7 @@
 <p>分析：控制语句进行判断。</p>
 <p><b>code:</b></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"><span class="comment"># create Ttstcy</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">题目：输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数。</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line">Intestr=raw_input(<span class="string">"请输入字符串："</span>)</div><div class="line"></div><div class="line">zm=<span class="number">0</span></div><div class="line">kg=<span class="number">0</span></div><div class="line">sz=<span class="number">0</span></div><div class="line">ot=<span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> Intestr:</div><div class="line">	<span class="keyword">if</span> i.isalpha():</div><div class="line">		zm+=<span class="number">1</span></div><div class="line">	<span class="keyword">elif</span> i.isspace():</div><div class="line">		kg+=<span class="number">1</span></div><div class="line">	<span class="keyword">elif</span> i.isdigit():</div><div class="line">		sz+=<span class="number">1</span></div><div class="line">	<span class="keyword">else</span>:</div><div class="line">		ot+=<span class="number">1</span></div><div class="line"><span class="keyword">print</span> (<span class="string">"字母有%d,空格有%d,数字有%d,其他有%d"</span>) % (zm,kg,sz,ot)</div></pre></td></tr></table></figure>
-<p><b>注释：</b><br>&amp;nbsp&amp;nbsp&amp;nbspi.isalnum() 所有字符都是数字或者字母<br>&amp;nbsp&amp;nbsp&amp;nbspi.isalpha() 所有字符都是字母<br>&amp;nbsp&amp;nbsp&amp;nbspi.isdigit() 所有字符都是数字<br>&amp;nbsp&amp;nbsp&amp;nbspi.islower() 所有字符都是小写<br>&amp;nbsp&amp;nbsp&amp;nbspi.isupper() 所有字符都是大写<br>&amp;nbsp&amp;nbsp&amp;nbspi.istitle() 所有单词都是首字母大写，像标题<br>&amp;nbsp&amp;nbsp&amp;nbspi.isspace() 所有字符都是空白字符、\t、\n、\r</p>
+<p><b>注释：</b><br>i.isalnum() 所有字符都是数字或者字母<br>i.isalpha() 所有字符都是字母<br>i.isdigit() 所有字符都是数字<br>i.islower() 所有字符都是小写<br>i.isupper() 所有字符都是大写<br>i.istitle() 所有单词都是首字母大写，像标题<br>i.isspace() 所有字符都是空白字符、\t、\n、\r</p>
 
       
     </div>
