@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-15T12:20:34.657Z</updated>
+  <updated>2017-08-15T13:16:48.681Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python排序算法02选择排序</title>
+    <link href="http://yoursite.com/2017/08/15/python%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%9502%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/"/>
+    <id>http://yoursite.com/2017/08/15/python排序算法02选择排序/</id>
+    <published>2017-08-15T12:47:27.000Z</published>
+    <updated>2017-08-15T13:16:48.681Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h3>02选择排序</h3><br><b>描述</b><p></p>
+<p>选择排序是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）<br>的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法<br>（比如序列[5， 5， 3]第一次就将第一个[5]与[3]交换，导致第一个5挪动到第二个5后面）。</p>
+<p><b>基本思想:</b><br>  对比数组中前一个元素跟后一个元素的大小，如果后面的元素比前面的元素小则用一个变量k来记住他的位置，接着第二次比较，前面“后一个元素”现变成了“前一个元素”，继续跟他的“后一个元素”进行比较如果后面的元素比他要小则用变量k记住它在数组中的位置(下标)，等到循环结束的时候，我们应该找到了最小的那个数的下标了，然后进行判断，如果这个元素的下标不是第一个元素的下标，就让第一个元素跟他交换一下值，这样就找到整个数组中最小的数了。然后找到数组中第二小的数，让他跟数组中第二个元素交换一下值，以此类推。</p>
+<p><b>代码如下:</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span><span class="params">(lists)</span>:</span></div><div class="line">    <span class="comment"># 选择排序</span></div><div class="line">    count = len(lists)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, count):</div><div class="line">        min = i</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, count):</div><div class="line">            <span class="keyword">if</span> lists[min] &gt; lists[j]:</div><div class="line">                min = j</div><div class="line">        lists[min], lists[i] = lists[i], lists[min]</div><div class="line">    <span class="keyword">return</span> lists</div></pre></td></tr></table></figure>
+<p> 优点：移动的数据次数已知为（n-1)次、<br> 缺点：不稳定、速度慢</p>
+<p> <b>时间复杂度:</b></p>
+<p> 选择排序的交换操作介于 0 和 (n - 1） 次之间。选择排序的比较操作为 n (n - 1） / 2 次之间。<br> 选择排序的赋值操作介于 0 和 3 (n - 1） 次之间。</p>
+<p>  比较次数O(n^2），比较次数与关键字的初始状态无关，总的比较次数N=(n-1）+(n-2）+…+1=n*(n-1）/2。交换次数O(n），最好情况是，已经有序，交换0次；最坏情况交换n-1次，逆序交换n/2次。交换次数比冒泡排序少多了，由于交换所需CPU时间比比较所需的CPU时间多，n值较小时，选择排序比冒泡排序快。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;/p&gt;&lt;h3&gt;02选择排序&lt;/h3&gt;&lt;br&gt;&lt;b&gt;描述&lt;/b&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;选择排序是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）&lt;br&gt;的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序
+    
+    </summary>
+    
+    
+      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>每天一道python练习04</title>
@@ -70,9 +102,9 @@
     </summary>
     
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
