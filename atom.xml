@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-15T13:16:48.681Z</updated>
+  <updated>2017-08-16T14:25:30.792Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python排序算法03快速排序</title>
+    <link href="http://yoursite.com/2017/08/16/python%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%9503%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
+    <id>http://yoursite.com/2017/08/16/python排序算法03快速排序/</id>
+    <published>2017-08-16T14:05:58.000Z</published>
+    <updated>2017-08-16T14:25:30.792Z</updated>
+    
+    <content type="html"><![CDATA[<h3>快速排序</h3>
+
+<h4>简述</h4>
+
+
+<p>快速排序由C. A. R. Hoare在1962年提出。它的基本思想是：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。</p>
+<h4>基本思想</h4>
+
+
+<p>1.设置两个变量i、j，排序开始的时候：i=0，j=N-1；<br>2.以第一个数组元素作为关键数据，赋值给key，即key=A[0]；<br>3.从j开始向前搜索，即由后开始向前搜索(j–)，找到第一个小于key的值A[j]，将A[j]和A[i]互换；<br>4.从i开始向后搜索，即由前开始向后搜索(i++)，找到第一个大于key的A[i]，将A[i]和A[j]互换；<br>5.重复第3、4步，直到i=j； (3,4步中，没找到符合条件的值，即3中A[j]不小于key,4中A[i]不大于key的时候改变j、i的值，使得j=j-1，i=i+1，直至找到为止。找到符合条件的值，进行交换的时候i， j指针位置不变。另外，i==j这一过程一定正好是i+或j-完成的时候，此时令循环结束）。</p>
+<h4>代码实现</h4>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(array, left, right)</span>:</span></div><div class="line">    <span class="keyword">if</span> left &lt; right:</div><div class="line">        mid = partition(array, left, right)</div><div class="line">        quick_sort(array, left,  mid<span class="number">-1</span>)</div><div class="line">        quick_sort(array, mid+<span class="number">1</span>, right)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(array, left, right)</span>:</span></div><div class="line">    tmp = array[left]</div><div class="line">    <span class="keyword">while</span> left &lt; right:</div><div class="line">        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> array[right] &gt;= tmp:</div><div class="line">            right -= <span class="number">1</span></div><div class="line">        array[left] = array[right]</div><div class="line">        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> array[left] &lt;= tmp:</div><div class="line">            left += <span class="number">1</span></div><div class="line">        array[right] = array[left]</div><div class="line">    array[left] = tmp</div><div class="line">    <span class="keyword">return</span> left</div></pre></td></tr></table></figure>
+<h4>优缺点<4><br><br>优点:排序速度快<br>缺点:不稳定<br><br><br><h4>时间复杂度</h4>
+
+
+<p>快速排序最优的情况下时间复杂度为：O( nlogn )<br>快速排序最差的情况下时间复杂度为：O( n^2 )</p>
+</4></h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3&gt;快速排序&lt;/h3&gt;
+
+&lt;h4&gt;简述&lt;/h4&gt;
+
+
+&lt;p&gt;快速排序由C. A. R. Hoare在1962年提出。它的基本思想是：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每天一道python练习05</title>
+    <link href="http://yoursite.com/2017/08/16/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A005/"/>
+    <id>http://yoursite.com/2017/08/16/每天一道python练习05/</id>
+    <published>2017-08-16T13:19:26.000Z</published>
+    <updated>2017-08-16T14:02:32.062Z</updated>
+    
+    <content type="html"><![CDATA[<h3> 题目：对10个数进行排序</h3>
+
+<p><b>code1:</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"><span class="comment"># create Ttstcy</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string"> 题目：对10个数进行排序</span></div><div class="line"><span class="string"> 直接调用排序方法sort()</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"please input 10 number:"</span></div><div class="line"></div><div class="line">arr=[]</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">    l.append(int(raw_input(<span class="string">'Input you number:'</span>)))</div><div class="line"></div><div class="line">arr.sort()    <span class="comment">#直接调用sort()排序方法</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> arr</div></pre></td></tr></table></figure>
+<p><b>code2:</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"><span class="comment"># create Ttstcy</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string"> 题目：对10个数进行排序</span></div><div class="line"><span class="string"> 采用排序算法</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"please input 10 number:"</span></div><div class="line"></div><div class="line">arr=[]</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</div><div class="line">    arr.append(int(raw_input(<span class="string">'Input a number:'</span>)))</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):        <span class="comment">#编写排序算法</span></div><div class="line">     <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>,<span class="number">10</span>):</div><div class="line">         <span class="keyword">if</span> l[j]&lt;l[i]:</div><div class="line">             temp = arr[j]</div><div class="line">             arr[j] = arr[i]</div><div class="line">             arr[i] = temp    </div><div class="line"></div><div class="line"><span class="keyword">print</span>  arr</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3&gt; 题目：对10个数进行排序&lt;/h3&gt;
+
+&lt;p&gt;&lt;b&gt;code1:&lt;/b&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;d
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>python排序算法02选择排序</title>
@@ -41,9 +114,9 @@
     </summary>
     
     
-      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -102,9 +175,9 @@
     </summary>
     
     
-      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
