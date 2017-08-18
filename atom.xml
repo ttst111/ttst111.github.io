@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-16T14:25:30.792Z</updated>
+  <updated>2017-08-18T14:23:46.478Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每天一道python练习06</title>
+    <link href="http://yoursite.com/2017/08/18/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A006/"/>
+    <id>http://yoursite.com/2017/08/18/每天一道python练习06/</id>
+    <published>2017-08-18T14:04:46.000Z</published>
+    <updated>2017-08-18T14:23:46.478Z</updated>
+    
+    <content type="html"><![CDATA[<h3>题目：建立一个简单的TCP客户端和服务器.</h3>
+
+<h4>1.采用socket模块建立</h4>
+
+<p><b>Tcp服务器代码:</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="comment"># create Ttstcy</span></div><div class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> time <span class="keyword">import</span> ctime</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">一个简单的tcp服务器</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">'''</span></div><div class="line">Host=<span class="string">'127.0.0.1'</span>   </div><div class="line">Port=<span class="number">56478</span></div><div class="line">Buffer=<span class="number">1024</span></div><div class="line">add=(Host,Port)</div><div class="line"></div><div class="line">tcpSocket=socket(AF_INET,SOCK_STREAM) <span class="comment">#建立socket套接字</span></div><div class="line">tcpSocket.bind(add)                   <span class="comment">#绑定地址</span></div><div class="line">tcpSocket.listen(<span class="number">5</span>)                   <span class="comment">#接受最大连接数</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">	print(<span class="string">'waiting for connection......'</span>)</div><div class="line">	tcpSocket,add=tcpSocket.accept()       <span class="comment">#接收客户端连接</span></div><div class="line">	print(<span class="string">'connection from:'</span> , add)</div><div class="line"></div><div class="line">	<span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">		data=tcpSocket.recv(Buffer)</div><div class="line">		<span class="keyword">if</span> <span class="keyword">not</span> data:</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		tcpSocket.send(<span class="string">'[%s] %s'</span> % (ctime(),data))  <span class="comment">#返回消息</span></div><div class="line"></div><div class="line">	tcpClient.close()            <span class="comment">#关闭当前客户端连接</span></div><div class="line">tcpSocket.close()</div></pre></td></tr></table></figure>
+<p><b>Tcp客户端代码:</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"><span class="comment"># create Ttstcy</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">一个简单的TCP客户端</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">'''</span></div><div class="line">Host=<span class="string">'127.0.0.1'</span></div><div class="line">Port=<span class="number">56478</span></div><div class="line">Buffer=<span class="number">1024</span></div><div class="line">Add=(Host,Port)</div><div class="line"></div><div class="line">tcpClient=socket(AF_INET,SOCK_STREAM) <span class="comment">#建立socket套接字</span></div><div class="line">tcpClient.connect(Add)                <span class="comment">#连接服务器</span></div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">	data= raw_input(<span class="string">'&gt; '</span>)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">not</span> data:</div><div class="line">		<span class="keyword">break</span>;</div><div class="line">	tcpClient.send(data)            <span class="comment">#向服务器发送数据</span></div><div class="line">	data=tcpClient.recv(Buffer)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">not</span> data:</div><div class="line">		<span class="keyword">break</span>;</div><div class="line">	<span class="keyword">print</span> data</div><div class="line"></div><div class="line">tcpClient.close()                 <span class="comment">#关闭客户端连接</span></div></pre></td></tr></table></figure>
+<h4>2.采用SocketServer创建</h4>
+
+<p><b>Tcp服务器代码:</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> SocketServer <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> time <span class="keyword">import</span> ctime</div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">简单的SocketServer Tcp服务器</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line">Host=<span class="string">'127.0.0.1'</span></div><div class="line">Port=<span class="number">15489</span></div><div class="line">Add=(Host,Port)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRequestHandler</span><span class="params">(StreamRequestHandler)</span>:</span> <span class="comment">#重写Handler方法</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">handler</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">print</span> <span class="string">'connection from :'</span>,self.client_address</div><div class="line">		self.wfile(<span class="string">'[%s] %s'</span> % (ctime(),self.rfile.readline()))  <span class="comment">#wfile来发送data，readline()用来获取客户端date</span></div><div class="line"></div><div class="line">tcpServ = TCPServer(Add,MyRequestHandler)     </div><div class="line"><span class="keyword">print</span> <span class="string">'waiting for connection...'</span></div><div class="line">tcpServ.serve_forever()  <span class="comment">#无线循环请求</span></div></pre></td></tr></table></figure>
+<p><b>TCP客户端:</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">SocketServer 客户端</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">'''</span></div><div class="line">Host=<span class="string">'127.0.0.1'</span></div><div class="line">Port=<span class="number">15489</span></div><div class="line">Buffer=<span class="number">1024</span></div><div class="line">Add=(Host,Port)</div><div class="line"></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">	tcpClient = socket(AF_INET,SOCK_STREAM)</div><div class="line">	tcpClient.connect(Add)</div><div class="line">	data= raw_input(<span class="string">'&gt;'</span>)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">not</span> data:</div><div class="line">		<span class="keyword">break</span></div><div class="line">	tcpClient.send(<span class="string">'%s\n'</span> % data)</div><div class="line">	data= tcpClient.recv(Buffer)</div><div class="line">	<span class="keyword">if</span> <span class="keyword">not</span> data:</div><div class="line">		<span class="keyword">break</span></div><div class="line">	<span class="keyword">print</span> data</div><div class="line">	tcpClient.close()</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3&gt;题目：建立一个简单的TCP客户端和服务器.&lt;/h3&gt;
+
+&lt;h4&gt;1.采用socket模块建立&lt;/h4&gt;
+
+&lt;p&gt;&lt;b&gt;Tcp服务器代码:&lt;/b&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutt
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="网络编程" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>python排序算法03快速排序</title>
@@ -53,9 +93,9 @@
     </summary>
     
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
@@ -114,9 +154,9 @@
     </summary>
     
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
@@ -175,9 +215,9 @@
     </summary>
     
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
       <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
     
   </entry>
   
