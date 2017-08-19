@@ -3,6 +3,103 @@
   
     
     <entry>
+      <title><![CDATA[Mysql数据库的优化]]></title>
+      <url>/2017/08/19/Mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BC%98%E5%8C%96/</url>
+      <content type="html"><![CDATA[<p><b>一.MySQL的主要适用场景</b></p>
+<p>1.Web网站系统</p>
+<p>2.日志记录系统</p>
+<p>3.数据仓库系统</p>
+<p>4.嵌入式系统</p>
+<p><b>二.Mysql基本架构图</b><br><img src="/images/mysql.jpg"></p>
+<p><b>三.mysql优化</b></p>
+<p><b>1.选取最适用的字段属性</b></p>
+<p>MySQL可以很好的支持大数据量的存取，但是一般说来，数据库中的表越小，在它上面执行的查询也就会越快。因此，在创建表的时候，为了获得更好的性能，我们可以将表中字<br>段的宽度设得尽可能小。</p>
+<p>例如，在定义邮政编码这个字段时，如果将其设置为CHAR(255),显然给数据库增加了不必要的空间，甚至使用VARCHAR这种类型也是多余的，因为CHAR(6)就可以很好的完成任务了。<br>同样的，如果可以的话，我们应该使用MEDIUMINT而不是BIGIN来定义整型字段。</p>
+<p>另外一个提高效率的方法是在可能的情况下，应该尽量把字段设置为NOTNULL，这样在将来执行查询的时候，数据库不用去比较NULL值。<br>对于某些文本字段，例如“省份”或者“性别”，我们可以将它们定义为ENUM类型。因为在MySQL中，ENUM类型被当作数值型数据来处理，而数值型数据被处理起来的速度要比文本类型<br>快得多。这样，我们又可以提高数据库的性能。</p>
+<p><b>2.使用索引</b></p>
+<p>索引是提高数据库性能的常用方法，它可以令数据库服务器以比没有索引快得多的速度检索特定的行，尤其是在查询语句当中包含有MAX(),MIN()和ORDERBY这些命令的时候，性能提<br>高更为明显。</p>
+<p>一般说来，索引应建立在那些将用于JOIN,WHERE判断和ORDERBY排序的字段上。尽量不要对数据库中某个含有大量重复的值的字段建立索引。对于一个ENUM类型的字段来说，出现大量<br>重复值是很有可能的情况</p>
+<p>例如customerinfo中的“province”..字段，在这样的字段上建立索引将不会有什么帮助；相反，还有可能降低数据库的性能。我们在创建表的时候可以同时创建合适的索引，也可以使<br>用ALTERTABLE或CREATEINDEX在以后创建索引。此外，MySQL从版本3.23.23开始支持全文索引和搜索。全文索引在MySQL中是一个FULLTEXT类型索引，但仅能用于MyISAM类型的表。对于<br>一个大的数据库，将数据装载到一个没有FULLTEXT索引的表中，然后再使用ALTERTABLE或CREATEINDEX创建索引，将是非常快的。但如果将数据装载到一个已经有FULLTEXT索引的表中，<br>执行过程将会非常慢。</p>
+<p><b>3.优化sql查询语句</b></p>
+<p>sql语句的优化思路和原则主要提现在以下几个方面：</p>
+<ol>
+<li><p>优化更需要优化的Query；</p>
+</li>
+<li><p>定位优化对象的性能瓶颈；</p>
+</li>
+<li><p>明确的优化目标；</p>
+</li>
+<li><p>从Explain入手；</p>
+</li>
+<li><p>多使用profile</p>
+</li>
+<li><p>永远用小结果集驱动大的结果集；</p>
+</li>
+<li><p>尽可能在索引中完成排序；</p>
+</li>
+<li><p>只取出自己需要的Columns；</p>
+</li>
+<li><p>仅仅使用最有效的过滤条件；</p>
+</li>
+</ol>
+<p>10.尽可能避免复杂的Join和子查询；</p>
+<p><b>4.使用事务</b></p>
+<p>尽管我们可以使用子查询（Sub-Queries）、连接（JOIN）和联合（UNION）来创建各种各样的查询，但不是所有的数据库操作都可以只用一条或少数几条SQL语句就可以完成的。更多的时候<br>是需要用到一系列的语句来完成某种工作。但是在这种情况下，当这个语句块中的某一条语句运行出错的时候，整个语句块的操作就会变得不确定起来。设想一下，要把某个数据同时插入两<br>个相关联的表中，可能会出现这样的情况：第一个表中成功更新后，数据库突然出现意外状况，造成第二个表中的操作没有完成，这样，就会造成数据的不完整，甚至会破坏数据库中的数据。<br>要避免这种情况，就应该使用事务，它的作用是：要么语句块中每条语句都操作成功，要么都失败。换句话说，就是可以保持数据库中数据的一致性和完整性。事物以BEGIN关键字开始，<br>COMMIT关键字结束。在这之间的一条SQL操作失败，那么，ROLLBACK命令就可以把数据库恢复到BEGIN开始之前的状态。<br>事务的另一个重要作用是当多个用户同时使用相同的数据源时，它可以利用锁定数据库的方法来为用户提供一种安全的访问方式，这样可以保证用户的操作不被其它的用户所干扰。</p>
+<p><b>5.多使用外键</b></p>
+<p>锁定表的方法可以维护数据的完整性，但是它却不能保证数据的关联性。这个时候我们就可以使用外键。</p>
+<p>例如，外键可以保证每一条销售记录都指向某一个存在的客户。在这里，外键可以把customerinfo表中的CustomerID映射到salesinfo表中CustomerID，任何一条没有合法CustomerID的记录都<br>不会被更新或插入到salesinfo中。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CREATETABLEcustomerinfo( CustomerIDINTNOTNULL,PRIMARYKEY(CustomerID))TYPE=INNODB;</div><div class="line"></div><div class="line">CREATETABLEsalesinfo( SalesIDINTNOTNULL,CustomerIDINTNOTNULL,</div><div class="line"></div><div class="line">PRIMARYKEY(CustomerID,SalesID),</div><div class="line"></div><div class="line">FOREIGNKEY(CustomerID)REFERENCEScustomerinfo(CustomerID)ONDELETECASCADE)TYPE=INNODB;</div></pre></td></tr></table></figure></p>
+<p>例子中的参数“ONDELETECASCADE”。该参数保证当customerinfo表中的一条客户记录被删除的时候，salesinfo表中所有与该客户相关的记录也会被自动删除。如果要在MySQL中使用外键，一定要<br>记住在创建表的时候将表的类型定义为事务安全表InnoDB类型。该类型不是MySQL表的默认类型。定义的方法是在CREATETABLE语句中加上TYPE=INNODB。</p>
+<p><b>6.选取正确的字段属性</b></p>
+<p>MySQL可以很好的支持大数据量的存取，但是一般说来，数据库中的表越小，在它上面执行的查询也就会越快。因此，在创建表的时候，为了获得更好的性能，我们可以将表中字段的宽度设得尽可能小。</p>
+<p>另外一个提高效率的方法是在可能的情况下，应该尽量把字段设置为NOTNULL，这样在将来执行查询的时候，数据库不用去比较NULL值。<br>对于某些文本字段，例如“省份”或者“性别”，我们可以将它们定义为ENUM类型。因为在MySQL中，ENUM类型被当作数值型数据来处理，而数值型数据被处理起来的速度要比文本类型快得多。这样，我们又可以提高数据库的性能。</p>
+<p><b>四.Mysql的Stroge Engine</b></p>
+<ol>
+<li>MyISAM存储引擎</li>
+</ol>
+<p>MyISAM存储引擎的表在数据库中，每一个表都被存放为三个以表名命名的物理文件。首先肯定会有任何存储引擎都不可缺少的存放表结构定义信息的.frm文件，另外还有.MYD和.MYI文件，分别存放了表的数据（.MYD）和索引数据（.MYI）。每个表都有且仅有这样三个文件做为MyISAM存储类型的表的存储，也就是说不管这个表有多少个索引，都是存放在同一个.MYI文件中。</p>
+<p>MyISAM支持以下三种类型的索引：</p>
+<p>1.1 B-Tree索引</p>
+<p>B-Tree索引，顾名思义，就是所有的索引节点都按照balancetree的数据结构来存储，所有的索引数据节点都在叶节点。</p>
+<p>1.2 R-Tree索引</p>
+<p>R-Tree索引的存储方式和b-tree索引有一些区别，主要设计用于为存储空间和多维数据的字段做索引，所以目前的MySQL版本来说，也仅支持geometry类型的字段作索引。</p>
+<p>1.3 Full-text索引</p>
+<p>Full-text索引就是我们长说的全文索引，他的存储结构也是b-tree。主要是为了解决在我们需要用like查询的低效问题。</p>
+<p>2.Innodb 存储引擎</p>
+<p>2.1 支持事务安装</p>
+<p>2.2 数据多版本读取</p>
+<p>2.3 锁定机制的改进</p>
+<p>2.4 实现外键</p>
+<p> NDBCluster存储引擎</p>
+<p>NDB存储引擎也叫NDBCluster存储引擎，主要用于MySQLCluster分布式集群环境，Cluster是MySQL从5.0版本才开始提供的新功能。</p>
+<p> Merge存储引擎</p>
+<p>MERGE存储引擎，在MySQL用户手册中也提到了，也被大家认识为MRG_MyISAM引擎。Why？因为MERGE存储引擎可以简单的理解为其功能就是实现了对结构相同的MyISAM表，通过一些特殊的包装对外提供一个单一的访问入口，以达到减小应用的复杂度的目的。要创建MERGE表，不仅仅基表的结构要完全一致，包括字段的顺序，基表的索引也必须完全一致。</p>
+<p> Memory存储引擎</p>
+<p>Memory存储引擎，通过名字就很容易让人知道，他是一个将数据存储在内存中的存储引擎。Memory存储引擎不会将任何数据存放到磁盘上，仅仅存放了一个表结构相关信息的.frm文件在磁盘上面。所以一旦MySQLCrash或者主机Crash之后，Memory的表就只剩下一个结构了。Memory表支持索引，并且同时支持Hash和B－Tree两种格式的索引。由于是存放在内存中，所以Memory都是按照定长的空间来存储数据的，而且不支持BLOB和TEXT类型的字段。Memory存储引擎实现页级锁定。</p>
+<p> BDB存储引擎</p>
+<p>BDB存储引擎全称为BerkeleyDB存储引擎，和Innodb一样，也不是MySQL自己开发实现的一个存储引擎，而是由SleepycatSoftware所提供，当然，也是开源存储引擎，同样支持事务安全。</p>
+<p> FEDERATED存储引擎</p>
+<p>FEDERATED存储引擎所实现的功能，和Oracle的DBLINK基本相似，主要用来提供对远程MySQL服务器上面的数据的访问接口。如果我们使用源码编译来安装MySQL，那么必须手工指定启用FEDERATED存储引擎才行，因为MySQL默认是不起用该存储引擎的。</p>
+<p> ARCHIVE存储引擎</p>
+<p>ARCHIVE存储引擎主要用于通过较小的存储空间来存放过期的很少访问的历史数据。ARCHIVE表不支持索引，通过一个.frm的结构定义文件，一个.ARZ的数据压缩文件还有一个.ARM的meta信息文件。由于其所存放的数据的特殊性，ARCHIVE表不支持删除，修改操</p>
+<p>作，仅支持插入和查询操作。锁定机制为行级锁定。</p>
+<p> BLACKHOLE存储引擎</p>
+<p>BLACKHOLE存储引擎是一个非常有意思的存储引擎，功能恰如其名，就是一个“黑洞”。就像我们unix系统下面的“/dev/null”设备一样，不管我们写入任何信息，都是有去无回。</p>
+<p> CSV存储引擎</p>
+<p>CSV存储引擎实际上操作的就是一个标准的CSV文件，他不支持索引。起主要用途就是大家有些时候可能会需要通过数据库中的数据导出成一份报表文件，而CSV文件是很多软件都支持的一种较为标准的格式，所以我们可以通过先在数据库中建立一张CVS表，然后将生成的报表信息插入到该表，即可得到一份CSV报表文件了。</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[每天一道python练习06]]></title>
       <url>/2017/08/18/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A006/</url>
       <content type="html"><![CDATA[<h3>题目：建立一个简单的TCP客户端和服务器.</h3>
