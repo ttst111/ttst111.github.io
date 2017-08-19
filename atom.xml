@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-19T13:55:29.161Z</updated>
+  <updated>2017-08-19T14:46:32.518Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每日天一道python练习07</title>
+    <link href="http://yoursite.com/2017/08/19/%E6%AF%8F%E6%97%A5%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A007/"/>
+    <id>http://yoursite.com/2017/08/19/每日天一道python练习07/</id>
+    <published>2017-08-19T14:06:43.000Z</published>
+    <updated>2017-08-19T14:46:32.518Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h4>题目:有一个文件，文件名为output_1981.10.21.txt 。下面使用python： 读取文件名中的日期时间信息，并找出这一天是周几。将文件改名为output_YYYY-MM-DD-W.txt (YYYY:四位的年，MM：两位的月份，DD：两位的日，W：一位的周几，并假设周一为一周第一天)<h4><p></p>
+<p><b>分析:主要通过导入正则匹配的库re，利用/d匹配数字（/D匹配非数值类型),通过时间库输出星期几，最后采用sub()函数匹配替换文件名</b></p>
+<p>code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding=utf-8 -*-</span></div><div class="line"><span class="comment"># create Ttstcy</span></div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string">有题目:一个文件，文件名为output_1981.10.21.txt 。下面使用python： 读取文件名中的日期</span></div><div class="line"><span class="string">时间信息，并找出这一天是周几。将文件改名为output_YYYY-MM-DD-W.txt (YYYY:四位的年</span></div><div class="line"><span class="string">，MM：两位的月份，DD：两位的日，W：一位的周几，并假设周一为一周第一天)</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">'''</span></div><div class="line">filename=<span class="string">"output_1981.10.21.txt"</span></div><div class="line"></div><div class="line">day=re.search(<span class="string">"output_(\d&#123;4&#125;.\d&#123;2&#125;.\d&#123;2&#125;)"</span>,filename)  <span class="comment">#\d匹配数字</span></div><div class="line"></div><div class="line">newDate=day.group(<span class="number">1</span>)     <span class="comment">#获取匹配到的日期</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">'%s是周%s'</span> % (newDate,time.strftime(<span class="string">'%w'</span>))</div><div class="line"></div><div class="line"><span class="comment">#分割日期成YY、MM、DD</span></div><div class="line">year=newDate[<span class="number">0</span>:<span class="number">4</span>]</div><div class="line">month=newDate[<span class="number">5</span>:<span class="number">7</span>]</div><div class="line">day=newDate[<span class="number">8</span>:<span class="number">10</span>]</div><div class="line"></div><div class="line">replace=<span class="string">'%s-%s-%s-%s'</span> % (year,month,day,time.strftime(<span class="string">'%w'</span>))</div><div class="line"></div><div class="line">fileName = re.sub(<span class="string">"\d&#123;4&#125;.\d&#123;2&#125;.\d&#123;2&#125;"</span>, replace, filename) <span class="comment">#使用sub()进行替换  </span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">'新的文件名为:%s'</span> % fileName</div></pre></td></tr></table></figure></h4></h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;/p&gt;&lt;h4&gt;题目:有一个文件，文件名为output_1981.10.21.txt 。下面使用python： 读取文件名中的日期时间信息，并找出这一天是周几。将文件改名为output_YYYY-MM-DD-W.txt (YYYY:四位的年，MM：两位的月份，DD：两位的日
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="正则表达式" scheme="http://yoursite.com/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Mysql数据库的优化</title>
