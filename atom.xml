@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-19T14:46:32.518Z</updated>
+  <updated>2017-08-21T15:27:10.045Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常见的防火墙有的类型</title>
+    <link href="http://yoursite.com/2017/08/21/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%98%B2%E7%81%AB%E5%A2%99%E7%9A%84%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://yoursite.com/2017/08/21/常见的防火墙的类型/</id>
+    <published>2017-08-21T13:30:08.000Z</published>
+    <updated>2017-08-21T15:27:10.045Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天做阿里2017安全工程师笔试模拟的时候看到这个问题，常见的网络防火墙有哪些类型及他们的优缺点？大公司会选择那种防火墙。（大概是这样)<br>所以今天就大概的介绍一下防火墙的基本类型。</p>
+<h4>什么是防火墙</h4><br>首先什么是防火墙，防火墙是指由软件和硬件组合而成，用于隔离内网和外网、公用网络和专业网络之间的一道安全屏障。防火墙可以保护内网免<br>受非法用户的入侵和绝大多数的网络攻击，防火墙主要由匹配规则、验证工具、包过滤以及应用网关这4个部分组合而成，所有从内外网流出的数据<br>都要经过防火墙的检测，只有符合安全规则的数据才能从防火墙通过，<br><br><h4>包过滤防火墙</h4><br>首先是最基本的包过滤防火墙，包过滤防火墙通过查看数据包的包头信息与特征库里的信息进行比对，如果没有比对到特征码，则认为数据包是安全的<br>，通过数据包；否则就丢弃该数据包。<br><br>包过滤在IP层进行实现，通过检查数据包的源IP地址、目标IP地址、源端口号、目标端口号、网络协议的类型等信息来进行判断数据包的安全性包过滤<br>也可以对服务类型进行过滤，可以知道特定的服务进行过滤，由于绝大多数的服务都在TCP/UDP端口上，因此只需要对特定的端口数据包进行丢弃即可.<br>包过滤一般通过一台路由器或主机进行过滤，列入在常见的Cisco路由设备上，可以通过配置ACL（访问控制列表),来对数据包进行控制，可以进行如下<br>的访问控制:<br><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">int s0   <span class="comment">#进入路由器的s0端口</span></div><div class="line"></div><div class="line">ip access-gropu <span class="number">104</span> <span class="keyword">in</span>    <span class="comment">#建立访问控制列表104</span></div><div class="line"></div><div class="line">access-list <span class="number">104</span> deny host  <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>  <span class="comment">#禁止192.168.1.1的数据包通过</span></div><div class="line"></div><div class="line">access-list <span class="number">104</span> permit any <span class="comment">#允许与其他人以计算机进行通信</span></div><div class="line"></div><div class="line">access-list <span class="number">104</span> deny tcp any host <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> eq www <span class="comment">#禁止所有通过TCP连接访问192.168.1.1的www服务的数据包</span></div><div class="line"></div><div class="line">access-list <span class="number">104</span> permit tcp <span class="number">192.168</span><span class="number">.1</span><span class="number">.0</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.255</span> <span class="number">192.168</span><span class="number">.2</span><span class="number">.0</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.255</span> establish <span class="comment">#如果连接建立，允许192.168.1.0网段的计算机访问192.168.2.0网段的计算机</span></div></pre></td></tr></table></figure><br><br>从以上可以看出包过滤防火墙只关注IP包头的信息，而不会去解封数据字段，所以可以得出以下优缺点：<br><br><b>优点:</b><br>-由于只对数据的包头进行检查、因此比较容易实现，适合小型、不太复杂的网络站点。<br>-应为过滤路由器主要工作在IP层，因此对数据包的处理速度比代理型服务器快.<br>-对于用户而言过滤路由器提供了一种透明服务，用户不需要配置，也被称为透明网关.<br>-价格比较便宜<br><br><b>缺点:</b><br>-显而易见由于是透明服务，因此包过滤网关不支持身份认证.<br>-特征库只能匹配已近存在的攻击，对于新型网络攻击无法解决.<br>-如果外网用户被允许访问内网的主机，那么他基本能访问所有主机.<br>-太依赖单一的部件来保护系统，列入匹配库失效，那么一切保护荡然无存.<br>-只能阻止外部IP伪装内部IP的欺骗，无法阻止外部IP伪装外部IP，也不能防止DNS欺骗.<br><br><br><h4>应用代理(网关)防火墙</h4><br>代理型防火墙包括了OSI七层的应用层，而且主要在应用层实现。应用代理起到一个中间人的作用,数据包不直接送服务器而是先流进处于浏览器和服务器之间的代理<br>，有代理服务器将信息传递到服务器端，当接收到服务器端的响应后，再由代理服务器，返回信息到浏览器。代理服务器也可以用于页面的缓存，代理服务器从互联<br>网上下载特定的页面前，先从缓存器中取出页面。内外网之间不存在直接连接.<br><br>由于应用代理防火墙主要在应用层实现，因此可以对网络上一层的数据包进行身份验证，使符合安全故则的通过，其余的丢弃。它允许通过的数据包由网关复制并传<br>递，防止在受信任服务器和客户机与不受信任的主机间直接建立联系。应用代理防火墙还可以起到隐藏内网的结构的作用，内网主机只需要将服务的IP地址指向代理<br>主机，就可以访问网络资源<br><br><b>优点</b><br>-应用代理提供身份认证，用户和密码的认证.<br>-内容过滤， 如上面我们讲到的Unicode攻击，应用代理（网关）防火墙能发现这种攻击，并对攻击进行阻断。此外，还有常见的过滤80端口的Java Applet、JavaScript、<br>ActiveX、电子邮件的MIME类型，还有Subject、To、From等等。<br>-由于突破了OSI的四层，因此可以提供详细的日志记录功能，可以记录应用层的一些相关命令。<br><br><b>缺点:</b><br>-速度慢，由于所有的连接都需要代理服务器的分析、转换、转发，所以速度较慢.<br>-一个明显的弊端就是，醒的网络协议和应用系统都需要新的应用代理.<br><br><h4>状态检测防火墙</h4><br>状态检测防火墙在网络层有一个检测引擎截获数据包并抽取与应用层状态有关的信息，通过这个作为依据是连接通过还是拒绝.状态检测技术最适合提供对UDP协议的有限支持。<br>它将所有通过防火墙的UDP分组均视为一个虚连接，当反向应答分组送达时，就认为一个虚拟连接已经建立。状态检测防火墙克服了包过滤防火墙和应用代理服务器的局限性，<br>不仅仅检测“to”和“from”的地址，而且不要求每个访问的应用都有代理。<br><br>这是第三代防火墙技术，能对网络通信的各层实行检测。同包过滤技术一样，它能够检测通过IP地址、端口号以及TCP标记，过滤进出的数据包。它允许受信任的客户机和不受信任的主机建立直接连接，不依靠<br>与应用层有关的代理，而是依靠某种算法来识别进出的应用层数据，这些算法通过己知合法数据包的模式来比较进出数据包，这样从理论上就能比应用级代理在过滤数据包上更有效。状态监视器的监视模块支持多种协议和应用程序，可方便地实现应用和服务的扩充。此外，它还可监测RPC和UDP端口信息，而包过滤和代理都不支持此类端口。这样，通过对各层进行监测，状态监视器实现网络安全的目的。目前，多使用状态监测防火墙，它对用户透明，在OSI最高层上加密数据，而无需修改客户端程序，也无需对每个需在防火墙上运行的服务额外增加一个代理。<br><br><b>优点:</b><br>-安全性高<br>状态检测防火墙工作在数据链路层和网络层之间，它从这里截取数据包，因为数据链路层是网卡工作的真正位置，网络层是协议栈的第一层，这样防火墙确保了截取和检查所有通过网络的原始数据包。防火墙截取到数据包就处理它们，首先根据安全策略从数据包中提取有用信息，保存在内存中；然后将相关信息组合起来，进行一些逻辑或数学运算，获得相应的结论，进行相应的操作，如允许数据包通过、拒绝数据包、认证连接、加密数据等。状态检测防火墙虽然工作在协议栈较低层，但它检测所有应用层的数据包，从中提取有用信息，如IP地址、端口号、数据内容等，这样安全性得到很大提高。<br><br>-高性能<br>状态检测防火墙工作在协议栈的较低层，通过防火墙的所有的数据包都在低层处理，而不需要协议栈的上层处理任何数据包，这样减少了高层协议头的开销，执行效率提高很多；另外在这种防火墙中一旦一个连接建立起来，就不用再对这个连接做更多工作，系统可以去处理别的连接，执行效率明显提高。<br><br>-可扩展性强<br>状态检测防火墙不像应用网关式防火墙那样，每一个应用对应一个服务程序，这样所能提供的服务是有限的，而且当增加一个新的服务时，必须为新的服务开发相应的服务程序，这样系统的可扩展性降低。状态检测防火墙不区分每个具体的应用，只是根据从数据包中提取出的信息、对应的安全策略及过滤规则处理数据包，当有一个新的应用时，它能动态产生新的应用的新的规则，而不用另外写代码，所以具有很好的伸缩性和扩展性。<br><br>-便于配置，应用范围广<br>状态检测防火墙不仅支持基于TCP的应用，而且支持基于无连接协议的应用，如RPC、基于UDP的应用(DNS 、WAIS、 Archie等)等。对于无连接的协议，连接请求和应答没有区别，包过滤防火墙和应用网关对此类应用要么不支持，要么开放一个大范围的UDP端口，这样暴露了内部网，降低了安全性。<br><br>状态检测防火墙实现了基于UDP应用的安全，通过在UDP通信之上保持一个虚拟连接来实现。防火墙保存通过网关的每一个连接的状态信息，允许穿过防火墙的UDP请求包被记录，当UDP包在相反方向上通过时，依据连接状态表确定该UDP包是否被授权的，若已被授权，则通过，否则拒绝。如果在指定的一段时间内响应数据包没有到达，连接超时，则该连接被阻塞，这样所有的攻击都被阻塞.状态检测防火墙可以控制无效连接的连接时间，避免大量的无效连接占用过多的网络资源，可以很好的降低DOS和DDOS攻击的风险。<br><br>状态检测防火墙也支持RPC，因为对于RPC服务来说，其端口号是不定的，因此简单的跟踪端口号是不能实现该种服务的安全，状态检测防火墙通过动态端口映射图记录端口号，为验证该连接还保存连接状态、程序号等，通过动态端口映射图来实现此类应用的安全。<br><br><b>缺点；</b><br>-数据存在延迟，由于连接建立在复杂的协议分析机制上<br>-不能分析高级协议中的数据.<br>-只检测第三层信息无法识别广告、木马、垃圾邮件等<br>-最大的弊端只能识别已经存在的安全问题、对于新的安全问题无能为力<br><br><h4>最新一代防火墙(第五代防火墙)</h4>
+
+<p>1998年，NAI公司推出了一种自适应代理（Adaptive proxy）技术，并在其产品Gauntlet Firewall for NT中得以实现，给代理类型的防火墙赋予了全新的意义，可以称之为第五代防火墙。</p>
+<p>一体化安全网关UTM</p>
+<p>UTM统一威胁管理，在防火墙基础上发展起来的，具备防火墙、IPS、防病毒、防垃圾邮件等综合功能的设备。由于同时开启多项功能会大大降低UTM的处理性能，因此主要用于对性能要求不高的中低端领域。在中低端领域，UTM已经出现了代替防火墙的趋势，因为在不开启附加功能的情况下，UTM本身就是一个防火墙，而附加功能又为用户的应用提供了更多选择。在高端应用领域，比如电信、金融等行业，仍然以专用的高性能防火墙、IPS为主流。</p>
+<h4>企业级防火墙</h4>
+
+<p>大型企业一般都会选择混合型的防火墙，即集合包过滤、应用代理、状态检测，而且具备IDS、IPS、VPN、放垃圾邮件、支持IPV6和IPV4双协议、支持DDOS防护等功能的大型混合型防火墙。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天做阿里2017安全工程师笔试模拟的时候看到这个问题，常见的网络防火墙有哪些类型及他们的优缺点？大公司会选择那种防火墙。（大概是这样)&lt;br&gt;所以今天就大概的介绍一下防火墙的基本类型。&lt;/p&gt;
+&lt;h4&gt;什么是防火墙&lt;/h4&gt;&lt;br&gt;首先什么是防火墙，防火墙是指由软件和硬件
+    
+    </summary>
+    
+    
+      <category term="防火墙" scheme="http://yoursite.com/tags/%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈内网渗透的思路</title>
+    <link href="http://yoursite.com/2017/08/21/%E6%B5%85%E8%B0%88%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E7%9A%84%E6%80%9D%E8%B7%AF/"/>
+    <id>http://yoursite.com/2017/08/21/浅谈内网渗透的思路/</id>
+    <published>2017-08-21T13:13:20.000Z</published>
+    <updated>2017-08-21T13:13:20.736Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>每日天一道python练习07</title>
@@ -432,27 +476,6 @@
     
     
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>简记使用hexo在github搭建个人博客</title>
-    <link href="http://yoursite.com/2017/08/12/%E7%AE%80%E8%AE%B0%E4%BD%BF%E7%94%A8hexo%E5%9C%A8github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2017/08/12/简记使用hexo在github搭建个人博客/</id>
-    <published>2017-08-12T08:00:57.000Z</published>
-    <updated>2017-08-14T04:06:47.535Z</updated>
-    
-    <content type="html"><![CDATA[<p>  很早之前就想搭建一个个人博客，记录一些生活中的感悟，可惜一直没有时间。现在终于有时间了，记录一下<br>搭建的过程。<br>首先是准备工作：<br>1.注册给github账号<br>  进入<a href="https://github.com/注册github账号。" target="_blank" rel="external">https://github.com/注册github账号。</a><br>2.建立博客仓库<br>  注册成功后，登入。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;  很早之前就想搭建一个个人博客，记录一些生活中的感悟，可惜一直没有时间。现在终于有时间了，记录一下&lt;br&gt;搭建的过程。&lt;br&gt;首先是准备工作：&lt;br&gt;1.注册给github账号&lt;br&gt;  进入&lt;a href=&quot;https://github.com/注册github账号。&quot;
-    
-    </summary>
-    
-    
-      <category term="hexo,git" scheme="http://yoursite.com/tags/hexo-git/"/>
     
   </entry>
   
