@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title><![CDATA[每天一道python练习09]]></title>
+      <url>/2017/08/31/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A009/</url>
+      <content type="html"><![CDATA[<p><b>题目:</b>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
+<p><b>思路:</b>直接调用python的replace函数。</p>
+<p><b>code:<b><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="comment"># s 源字符串</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">replaceSpace</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="comment"># write code here</span></div><div class="line">        <span class="keyword">return</span> s.replace(<span class="string">" "</span>,<span class="string">"%20"</span>)</div></pre></td></tr></table></figure></b></b></p>
+<p><b>注释：</b><br>replace()方法语法：<br>str.replace(old, new[, max])</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> 字符串替换 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[每天一道python练习08]]></title>
       <url>/2017/08/31/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A008/</url>
       <content type="html"><![CDATA[<p><b>题目:</b>在一个二位数组中，每一行按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
