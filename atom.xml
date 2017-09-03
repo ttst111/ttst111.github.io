@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-31T03:26:05.057Z</updated>
+  <updated>2017-09-03T13:54:54.353Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>每天一道python练习10</title>
+    <link href="http://yoursite.com/2017/09/03/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A010/"/>
+    <id>http://yoursite.com/2017/09/03/每天一道python练习10/</id>
+    <published>2017-09-03T13:43:04.000Z</published>
+    <updated>2017-09-03T13:54:54.353Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h4>题目:输入一个链表，从尾到头打印链表每个节点的值。</h4><br><p></p>
+<p><b>思路:append函数移动，reserve函数调序</b></p>
+<p><b>code:<b><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="comment"># class ListNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="comment"># 返回从尾部到头部的列表值序列，例如[1,2,3]</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printListFromTailToHead</span><span class="params">(self, listNode)</span>:</span></div><div class="line">        <span class="comment"># write code here</span></div><div class="line">	Arr=[]</div><div class="line">	Head=listNode</div><div class="line">	<span class="keyword">while</span> head:</div><div class="line">	    Arr.append(head.val)</div><div class="line">	    head=head.next</div><div class="line"></div><div class="line">	Arr.reverse()</div><div class="line">	<span class="keyword">return</span> Arr</div></pre></td></tr></table></figure></b></b></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;/p&gt;&lt;h4&gt;题目:输入一个链表，从尾到头打印链表每个节点的值。&lt;/h4&gt;&lt;br&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;思路:append函数移动，reserve函数调序&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;code:&lt;b&gt;&lt;br&gt;&lt;figure class=&quot;highlight pyth
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="链表" scheme="http://yoursite.com/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>每天一道python练习09</title>
@@ -325,9 +352,9 @@
     </summary>
     
     
-      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -386,9 +413,9 @@
     </summary>
     
     
-      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -447,9 +474,9 @@
     </summary>
     
     
-      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="排序算法" scheme="http://yoursite.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   

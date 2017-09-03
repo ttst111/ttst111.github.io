@@ -3,6 +3,25 @@
   
     
     <entry>
+      <title><![CDATA[每天一道python练习10]]></title>
+      <url>/2017/09/03/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A010/</url>
+      <content type="html"><![CDATA[<p></p><h4>题目:输入一个链表，从尾到头打印链表每个节点的值。</h4><br><p></p>
+<p><b>思路:append函数移动，reserve函数调序</b></p>
+<p><b>code:<b><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="comment"># class ListNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.next = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="comment"># 返回从尾部到头部的列表值序列，例如[1,2,3]</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printListFromTailToHead</span><span class="params">(self, listNode)</span>:</span></div><div class="line">        <span class="comment"># write code here</span></div><div class="line">	Arr=[]</div><div class="line">	Head=listNode</div><div class="line">	<span class="keyword">while</span> head:</div><div class="line">	    Arr.append(head.val)</div><div class="line">	    head=head.next</div><div class="line"></div><div class="line">	Arr.reverse()</div><div class="line">	<span class="keyword">return</span> Arr</div></pre></td></tr></table></figure></b></b></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[每天一道python练习09]]></title>
       <url>/2017/08/31/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A009/</url>
       <content type="html"><![CDATA[<p><b>题目:</b>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
@@ -244,9 +263,9 @@
         
         <tags>
             
-            <tag> 排序算法 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 排序算法 </tag>
             
         </tags>
         
@@ -289,9 +308,9 @@
         
         <tags>
             
-            <tag> 排序算法 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 排序算法 </tag>
             
         </tags>
         
@@ -331,9 +350,9 @@
         
         <tags>
             
-            <tag> 排序算法 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 排序算法 </tag>
             
         </tags>
         
