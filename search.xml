@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title><![CDATA[每天一道python练习11]]></title>
+      <url>/2017/09/04/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A011/</url>
+      <content type="html"><![CDATA[<h4>题目:输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回.</h4>
+
+<p><b>思路:利用二叉树遍历的规则进行重组</b></p>
+<p><b>code:</b></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="comment"># 返回构造的TreeNode根节点</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reConstructBinaryTree</span><span class="params">(self, pre, tin)</span>:</span></div><div class="line">        <span class="comment"># write code here</span></div><div class="line">        <span class="keyword">if</span> (len(pre) == <span class="number">0</span>) <span class="keyword">or</span> (len(tin) == <span class="number">0</span>):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"></div><div class="line">        rootValue = pre[<span class="number">0</span>]</div><div class="line">        root = TreeNode(rootValue)</div><div class="line">        <span class="keyword">if</span> len(pre)==<span class="number">1</span>:</div><div class="line">            <span class="keyword">return</span> root</div><div class="line">        rootTinIndex = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(tin)):</div><div class="line">            <span class="keyword">if</span> tin[i] == rootValue:</div><div class="line">                rootTinIndex = i</div><div class="line">        preStart = <span class="number">1</span></div><div class="line">        preEnd = rootTinIndex+<span class="number">1</span></div><div class="line">        tinStart = <span class="number">0</span></div><div class="line">        tinEnd = rootTinIndex</div><div class="line">        <span class="keyword">if</span> rootTinIndex &gt; <span class="number">0</span>:</div><div class="line">            root.left = self.reConstructBinaryTree(pre[preStart:preEnd], tin[tinStart:tinEnd])</div><div class="line">        <span class="keyword">if</span> rootTinIndex &lt; len(pre):</div><div class="line">            root.right = self.reConstructBinaryTree(pre[preEnd:], tin[tinEnd+<span class="number">1</span>:])</div><div class="line">        <span class="keyword">return</span> root</div></pre></td></tr></table></figure>]]></content>
+      
+        
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> 二叉树遍历 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[每天一道python练习10]]></title>
       <url>/2017/09/03/%E6%AF%8F%E5%A4%A9%E4%B8%80%E9%81%93python%E7%BB%83%E4%B9%A010/</url>
       <content type="html"><![CDATA[<p></p><h4>题目:输入一个链表，从尾到头打印链表每个节点的值。</h4><br><p></p>
@@ -263,9 +283,9 @@
         
         <tags>
             
-            <tag> python </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> python </tag>
             
         </tags>
         
@@ -308,9 +328,9 @@
         
         <tags>
             
-            <tag> python </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> python </tag>
             
         </tags>
         
@@ -350,9 +370,9 @@
         
         <tags>
             
-            <tag> python </tag>
-            
             <tag> 排序算法 </tag>
+            
+            <tag> python </tag>
             
         </tags>
         
